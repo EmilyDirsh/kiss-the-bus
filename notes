@@ -1,0 +1,14 @@
+Mongo Geo 2dsphere index for stop locations
+
+Mongo database for stops and routes
+
+mapping: osm/openlayers
+ see also: leaflet js
+ see also: mapstraction
+
+realtime.mbta.com - routes, stop, schedule
+nextbus - predictions
+
+node, mongo, mongoose
+
+

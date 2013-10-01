@@ -13,24 +13,24 @@ var Schema = mongoose.Schema;
 
 var route = new Schema({
 	stopsForRoute:   [{
-		stopId:   String, 
-		stopName:   String,
-		directionName:   String
+		stopId:	String, 
+		stopName:	String,
+		directionName:	String
 	}],
-	routeId:   String,
-	routeName:   String,
-	modeName:   String,
+	routeId:	String,
+	routeName:	String,
+	modeName:	String,
 });
 
 var stop = new Schema({
-  modeName:   String,
-  stopId:   String,
-  stopName:   String,
-  stopLat:   Number,
-  stopLon:   Number,
-  schedule:   [{
-	routeName: String,
-	directionName:   String,
-	times:   [Date]
+ 	modeName:	String,
+ 	stopId:	String,
+ 	stopName:	String,
+ 	stopLat:	Number,
+	stopLon:	Number,
+	schedule:	[{
+	routeName:	String,
+	directionName:	String,
+	times:	[Date]
   }]
 });

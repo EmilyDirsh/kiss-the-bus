@@ -26,8 +26,7 @@ var stop = new Schema({
  	modeName:	String,
  	stopId:	String,
  	stopName:	String,
- 	stopLat:	Number,
-	stopLon:	Number,
+ 	stopLocation:	{type:	[Number], index:	'2dsphere'},
 	schedule:	[{
 	routeName:	String,
 	directionName:	String,

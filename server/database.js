@@ -10,8 +10,8 @@ var Schema = mongoose.Schema;
 //   
 
 
-
-var route = new Schema({
+/* Define schemas */
+var routeSchema = new Schema({
 	stopsForRoute:   [{
 		stopId:	String, 
 		stopName:	String,
@@ -20,16 +20,50 @@ var route = new Schema({
 	routeId:	String,
 	routeName:	String,
 	modeName:	String,
+    	index: {
+		routeId: 1,
+    		routeName: 1
+	}
 });
 
-var stop = new Schema({
+var stopSchema = new Schema({
  	modeName:	String,
  	stopId:	String,
  	stopName:	String,
- 	stopLocation:	{type:	[Number], index:	'2dsphere'},
+ 	stopLocation:	{
+		type:	[Number], 
+    		index:	'2dsphere'
+	},
 	schedule:	[{
-	routeName:	String,
-	directionName:	String,
-	times:	[Date]
-  }]
+		routeName:	String,
+		directionName:	String,
+		times:	[Date]
+	}],
+	index: {
+		stopId: 1,
+		stopName: 1,
+	}
 });
+
+/* Instantiate models */
+var Route = mongoose.model('Route', routeSchema);
+var Stop = mongoose.model('Stop', stopSchema);
+
+/* Connect to database */
+mongoose.connect('mongodb://localhost/kissthebus');
+var db = mongoose.connection();
+db.on('error', console.error.bind(console, 'connection error;'));
+db.once('open', function() {
+	console.log('connection created');
+});
+
+/*
+ * Next up:
+ * - populate the database: 
+ *  	- done fairly rarely
+ *  	- cron job
+ *  	- making calls to the API and translating the responses to the documents we've defined
+ *  	- separate file
+ * - do this as we go
+ * 	- define attribue accessor functions if needed
+ */

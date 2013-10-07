@@ -49,13 +49,12 @@ var stopSchema = new Schema({
 var Route = mongoose.model('Route', routeSchema);
 var Stop = mongoose.model('Stop', stopSchema);
 
-/* Connect to database */
-mongoose.connect('mongodb://localhost/kissthebus');
-var db = mongoose.connection();
-db.on('error', console.error.bind(console, 'connection error;'));
-db.once('open', function() {
-	console.log('connection created');
-});
+/* export models*/
+
+module.exports = {
+	Route: Route,
+	Stop: Stop
+}
 
 /*
  * Next up:

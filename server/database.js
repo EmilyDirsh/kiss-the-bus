@@ -12,34 +12,34 @@ var Schema = mongoose.Schema;
 
 /* Define schemas */
 var routeSchema = new Schema({
-	stopsForRoute:   [{
-		stopId:	String, 
+	stopsForRoute:	[{
+		stopId:		String, 
 		stopName:	String,
 		directionName:	String
 	}],
 	routeId:	String,
 	routeName:	String,
 	modeName:	String,
-    	index: {
-		routeId: 1,
-    		routeName: 1
+    	index: 	{
+		routeId: 	1,
+		routeName: 	1
 	}
 });
 
 var stopSchema = new Schema({
  	modeName:	String,
- 	stopId:	String,
+ 	stopId:		String,
  	stopName:	String,
  	stopLocation:	{
 		type:	[Number], 
-    		index:	'2dsphere'
+		index:	'2dsphere'
 	},
 	schedule:	[{
 		routeName:	String,
 		directionName:	String,
-		times:	[Date]
+		times:		[Date]
 	}],
-	index: {
+	index: 		{
 		stopId: 1,
 		stopName: 1,
 	}
